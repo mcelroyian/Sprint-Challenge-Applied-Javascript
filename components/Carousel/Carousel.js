@@ -17,10 +17,25 @@
     <div class="right-button"> > </div>
   </div>
 */
-
-
 const slider = document.querySelector('.carousel-container')
 slider.appendChild(newCarousel())
+
+let index = 0;
+let imgArr = [1,2,3,4]
+let img = document.querySelector('.carousel').children[imgArr[index]]
+img.style.display = 'block'
+
+function updateIndex(dir) {
+  if (index === 3 && dir === 1) {
+    index = -1
+  } else if ( index === 0 && dir === -1) {
+    index = 4
+  }
+  img.style.display = null
+  index = index + dir
+  img = document.querySelector('.carousel').children[imgArr[index]]
+  img.style.display = "block"
+}
 
 function newCarousel() {
   const make = (el) => document.createElement(el)
@@ -31,6 +46,10 @@ function newCarousel() {
   const left = make('div')
   left.classList.add('left-button')
   carousel.appendChild(left)
+
+  left.addEventListener('click', e => {
+    updateIndex(-1)
+  })
 
   const img1 = make('img')
   img1.src = "./assets/carousel/mountains.jpeg"
@@ -51,6 +70,10 @@ function newCarousel() {
   const right = make('div')
   right.classList.add('right-button')
   carousel.appendChild(right)
-  debugger
+
+  right.addEventListener('click', e => {
+    updateIndex(1)
+  })
+  
   return carousel
 }
