@@ -20,35 +20,32 @@
 // Use your function to create a card for each of the articles and add the card to the DOM.
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
-        .then( res => {
-            const articles = res.data.articles
-            const container = document.querySelector('.cards-container')
-            
-            const topics = Object.values(articles)
-                topics.forEach( topic => {
-                    topic.forEach ( article => {
-                        container.appendChild(makeCard(article))
-                    })
-                    
-                })
+    .then(res => {
+        const articles = res.data.articles
+        const container = document.querySelector('.cards-container')
 
+        const topics = Object.values(articles)
+        topics.forEach(topic => {
+            topic.forEach(article => {
+                container.appendChild(makeCard(article))
+            })
         })
-        .catch( err => {
-            console.log('Could not get article data')
-            debugger
-        })
+    })
+    .catch(err => {
+        console.log('Could not get article data')
+        debugger
+    })
 
 
 
 function makeCard(cardData) {
-    const make = (el) => document.createElement(el) 
+    const make = (el) => document.createElement(el)
     // <div class="card">
     const card = make('div')
     card.classList.add('card')
-    card.textContent = cardData.XXXXXX
 
     //   <div class="headline">{Headline of article}</div>
-    const headline = make ('div')
+    const headline = make('div')
     headline.classList.add('headline')
     headline.textContent = cardData.headline
     card.appendChild(headline)
@@ -75,7 +72,7 @@ function makeCard(cardData) {
     author.appendChild(authorName)
     //   </div>
     // </div>
-    
+
     return card
 }
 //makeCard({})
