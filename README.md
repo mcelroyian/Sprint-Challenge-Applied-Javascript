@@ -30,13 +30,23 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+    Dom is representation of the code in the browser that gives access to methods
+
 2. What is an event?
+
+    An event is an action that the browser tracks, such as a click, mouseover, keypress.
 
 3. What is an event listener?
 
+    Event listener is a request for the browser to execute async code when it registers an event
+
 4. Why would we convert a NodeList into an Array?
 
+    Because other things are nodes that we don't want to output. like linebreaks and such
+
 5. What is a component?
+
+    A component is a self contained code with html, css, and javascript that outputs a repeatable element for the page. It is modular and re-usable.
 
 ### Git Set up
 
