@@ -25,7 +25,6 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
             const container = document.querySelector('.cards-container')
             
             const topics = Object.values(articles)
-            debugger
                 topics.forEach( topic => {
                     topic.forEach ( article => {
                         container.appendChild(makeCard(article))
