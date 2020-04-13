@@ -17,3 +17,63 @@
     <div class="right-button"> > </div>
   </div>
 */
+const slider = document.querySelector('.carousel-container')
+slider.appendChild(newCarousel())
+
+let index = 0
+let imgArr = [1, 2, 3, 4]
+let img = document.querySelector('.carousel').children[imgArr[index]]
+img.style.display = 'block'
+
+function updateIndex(dir) {
+  if (index === 3 && dir === 1) {
+    index = -1
+  } else if (index === 0 && dir === -1) {
+    index = 4
+  }
+  img.style.display = null
+  index = index + dir
+  img = document.querySelector('.carousel').children[imgArr[index]]
+  img.style.display = "block"
+}
+
+function newCarousel() {
+  const make = (el) => document.createElement(el)
+
+  const carousel = make('div')
+  carousel.classList.add('carousel')
+
+  const left = make('div')
+  left.classList.add('left-button')
+  carousel.appendChild(left)
+
+  left.addEventListener('click', e => {
+    updateIndex(-1)
+  })
+
+  const img1 = make('img')
+  img1.src = "./assets/carousel/mountains.jpeg"
+  carousel.appendChild(img1)
+
+  const img2 = make('img')
+  img2.src = "./assets/carousel/computer.jpeg"
+  carousel.appendChild(img2)
+
+  const img3 = make('img')
+  img3.src = "./assets/carousel/trees.jpeg"
+  carousel.appendChild(img3)
+
+  const img4 = make('img')
+  img4.src = "./assets/carousel/turntable.jpeg"
+  carousel.appendChild(img4)
+
+  const right = make('div')
+  right.classList.add('right-button')
+  carousel.appendChild(right)
+
+  right.addEventListener('click', e => {
+    updateIndex(1)
+  })
+
+  return carousel
+}
